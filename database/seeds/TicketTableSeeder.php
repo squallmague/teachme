@@ -15,7 +15,7 @@ class TicketTableSeeder extends BaseSeeder{
     	return[
     		'title' 	=> $faker->sentence(),
     		'status' 	=> $faker->randomElement(['open', 'open', 'closed']),
-    		'user_id' 	=> $this->createFrom('UserTableSeeder')->id
+    		'user_id' 	=> $this->getRandom('User')->id
     	];
     }
 
