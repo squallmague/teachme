@@ -7,8 +7,6 @@ class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -18,11 +16,8 @@ class CreatePasswordResetsTable extends Migration
             $table->timestamp('created_at');
         });
     }
-
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

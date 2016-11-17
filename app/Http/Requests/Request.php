@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace TeachMe\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 abstract class Request extends FormRequest
 {
-    //
 }
