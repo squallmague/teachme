@@ -25,7 +25,13 @@ abstract class BaseSeeder extends Seeder{
     	//los valores que obtengo tienen como prioridad los $customValues enviados, sobre los datos de faker.
     	$values = array_merge($values, $customValues);
 
-    	$this->getModel()->create($values);
+    	return $this->getModel()->create($values);
+    }
+
+    protected function createFrom($seeder, array $customValues = array())
+    {
+    	$seeder = new $seeder;
+    	return $seeder->create($customValues);
     }
 
 }
