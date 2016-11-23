@@ -36,6 +36,6 @@ Route::get('/tutoriales',[
 ]);
 
 Route::get('/solicitud/{id}',[
-	'as'	=> 'tickets.datails',
+	'as'	=> 'tickets.details',
 	'uses' 	=> 'TicketsController@details'
 ]);
