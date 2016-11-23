@@ -1,13 +1,12 @@
 <?php
-
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
-class DatabaseSeeder extends Seeder
-{
+class DatabaseSeeder extends Seeder {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
     public function run()
     {
@@ -17,12 +16,10 @@ class DatabaseSeeder extends Seeder
             'password_resets',
             'tickets',
             'ticket_votes',
-            'ticket_comments',
+            'ticket_comments'
         ));
         $this->call('UserTableSeeder');
         $this->call('TicketTableSeeder');
-        $this->call('TicketVoteTableSeeder');
-        $this->call('TicketCommentTableSeeder');
 
         Model::reguard();
     }

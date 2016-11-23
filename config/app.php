@@ -138,12 +138,18 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Vendor Service Providers...
+         */
+
+        'TeachMe\Providers\HtmlServiceProvider',
+
+        /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        TeachMe\Providers\AppServiceProvider::class,
+        TeachMe\Providers\AuthServiceProvider::class,
+        TeachMe\Providers\EventServiceProvider::class,
+        TeachMe\Providers\RouteServiceProvider::class,
 
     ],
 
@@ -193,6 +199,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
     ],
 
 ];
