@@ -1,26 +1,21 @@
 <?php
 
-use Faker\Generator;
+
 use TeachMe\Entities\Ticket;
 
-class TicketTableSeeder extends BaseSeeder{
-
-	public function getModel()
-	{
-		return new Ticket();
-	}
-
-	public function getDummyData(Generator $faker, array $customValues = array())
+class TicketTableSeeder extends BaseSeeder
+{
+    public function getModel()
     {
-    	return[
-    		'title' 	=> $faker->sentence(),
-    		'status' 	=> $faker->randomElement(['open', 'open', 'closed']),
-    		'user_id' 	=> $this->getRandom('User')->id
-    	];
+        return new Ticket();
     }
 
-    public function run()
+    public function getDummyData(\Faker\Generator $faker, array $customValues = array())
     {
-    	$this->createMultiple(50);
+        return [
+            'title'   => $faker->sentence(),
+            'status'  => $faker->randomElement(['open', 'open', 'closed']),
+            'user_id' => $this->getRandom('User')->id,
+        ];
     }
 }
