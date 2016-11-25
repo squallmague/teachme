@@ -38,4 +38,11 @@ class TicketsController extends Controller
         $ticket = Ticket::findOrFail($id);
     	return view('tickets/details', compact('ticket'));
     }
+
+    public function create()
+    {
+        return '[Formulario de solicitud]';
+    }
+
+
 }

@@ -47,3 +47,11 @@ Route::get('/solicitud/{id}',[
 	'as'	=> 'tickets.details',
 	'uses' 	=> 'TicketsController@details'
 ]);
+
+Route::group(['middleware' => 'auth'], function () {
+
+	Route::get('/solicitar',[
+		'as' 	=> 'tickets.create',
+		'uses' 	=> 'TicketsController@create'
+	]);
+});
