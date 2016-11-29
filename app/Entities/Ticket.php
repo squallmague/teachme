@@ -4,9 +4,13 @@ namespace TeachMe\Entities;
 
 class Ticket extends Entity
 {
+    protected $fillable = ['title', 'status'];
+
+    //al colocar el nombre author para esta relación estamos rompiendo con la convención de laravel. es por eso que tenemos que agregar el parámetro user_id para especificar el campo
+
 	public function author()
     {
-    	return $this->belongsTo(User::getClass());
+    	return $this->belongsTo(User::getClass(), 'user_id');
     }
 
 	public function comments()

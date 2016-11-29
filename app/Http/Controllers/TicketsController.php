@@ -2,7 +2,9 @@
 
 namespace TeachMe\Http\Controllers;
 
+use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use TeachMe\Entities\Ticket;
 use TeachMe\Http\Controllers\Controller;
 use TeachMe\Http\Requests;
@@ -44,9 +46,26 @@ class TicketsController extends Controller
         return view('tickets.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Guard $auth)
     {
-        dd($request->all());
+        $this->validate($request, [
+            'title' => 'required|max:120'
+        ]);
+
+        //guardar el ticket con el ORM elocuent, no se necesita traer el usuario por que ya esta incluido al usar el modelo user
+        $ticket = $auth->user()->tickets()->create([
+            'title'     => $request->get('title'),
+            'status'    =>'open'
+        ]);
+
+        //forma anterior de guardar
+        // $ticket = new Ticket();
+        // $ticket->title = $request->get('title');
+        // $ticket->status = 'open';
+        // $ticket->user_id = $auth->user()->id;
+        // $ticket->save();
+
+        return Redirect::route('tickets.details', $ticket->id);
     }
 
 

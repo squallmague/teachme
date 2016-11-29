@@ -36,7 +36,7 @@ class User extends Entity implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function ticket()
+    public function tickets()
     {
         return $this->hasMany(Ticket::getClass());
     }
