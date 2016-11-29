@@ -23,7 +23,9 @@
                 <span class="label label-info">{{ $user->name }}</span>
             @endforeach
             </p>
-            
+
+            @if ( ! currentUser()->hasVoted($ticket))
+
             {!! Form::open(['route' => ['votes.submit', $ticket->id], 'method' => 'Post'])!!}
                 <!--button type="submit" class="btn btn-primary">Votar</button-->
                 <button type="submit" class="btn btn-primary">
@@ -31,12 +33,16 @@
                 </button>
             {!! Form::close() !!}
 
+            @else
+
             {!! Form::open(['route' => ['votes.destroy', $ticket->id], 'method' => 'DELETE'])!!}
                 <!--button type="submit" class="btn btn-primary">Votar</button-->
                 <button type="submit" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-thumbs-up"></span> Quitar Votar
+                    <span class="glyphicon glyphicon-thumbs-down"></span> Quitar Voto
                 </button>
             {!! Form::close() !!}
+
+            @endif
 
             <h3>Nuevo Comentario</h3>
 
