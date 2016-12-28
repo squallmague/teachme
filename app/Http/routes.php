@@ -23,6 +23,14 @@ Route::get('auth/logout', ['as' => 'auth/logout', 'uses' => 'Auth\AuthController
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 
+//passwords
+Route::get('password/email','Auth\PasswordController@getEmail');
+Route::post('password/email','Auth\PasswordController@postEmail');
+
+//passwords reset
+Route::get('password/reset/{token}','Auth\PasswordController@getReset');
+Route::post('password/reset','Auth\PasswordController@postReset');
+
 Route::get('/',[
 	'as'	=> 'tickets.latest',
 	'uses' 	=> 'TicketsController@latest'
@@ -69,9 +77,14 @@ Route::group(['middleware' => 'auth'], function () {
 		'uses' 	=> 'VotesController@submit'
 	]);
 
-	Route::delete('/{id}',[
+	Route::delete('votar/{id}',[
 		'as' 	=> 'votes.destroy',
 		'uses' 	=> 'VotesController@destroy'
+	]);
+
+	Route::post('comentar/{id}',[
+		'as' 	=> 'comments.submit',
+		'uses' 	=> 'CommentsController@submit'
 	]);
 
 	//Comentar

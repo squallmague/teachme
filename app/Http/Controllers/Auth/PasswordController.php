@@ -4,6 +4,7 @@ namespace TeachMe\Http\Controllers\Auth;
 
 use TeachMe\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Auth;
 
 class PasswordController extends Controller
 {
@@ -25,6 +26,11 @@ class PasswordController extends Controller
      *
      * @return void
      */
+
+    protected $redirectTo = '/'; 
+
+    
+
     public function __construct()
     {
         $this->middleware('guest');
