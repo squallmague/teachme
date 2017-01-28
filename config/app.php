@@ -136,6 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        'Barryvdh\Debugbar\ServiceProvider',
 
         /*
          * Vendor Service Providers...
@@ -201,6 +202,8 @@ return [
 
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
     ],
 
 ];

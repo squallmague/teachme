@@ -13,7 +13,8 @@ class TicketsController extends Controller
 {
     public function latest()
     {
-        $tickets = Ticket::orderBy('created_at', 'DESC')->paginate(20);
+        //uso with para poder usar el metodo author establecido en el la entidad Ticket
+        $tickets = Ticket::orderBy('created_at', 'DESC')->with('author')->paginate(20);
     	return view('tickets/list', compact('tickets'));
         //dd('latest');
     }
