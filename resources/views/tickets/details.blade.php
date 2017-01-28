@@ -30,25 +30,27 @@
                 <span class="label label-info">{{ $user->name }}</span>
             @endforeach
             </p>
+            
+            @if (Auth::check())
+                @if ( ! currentUser()->hasVoted($ticket))
 
-            @if ( ! currentUser()->hasVoted($ticket))
+                {!! Form::open(['route' => ['votes.submit', $ticket->id], 'method' => 'Post'])!!}
+                    <!--button type="submit" class="btn btn-primary">Votar</button-->
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> Votar
+                    </button>
+                {!! Form::close() !!}
 
-            {!! Form::open(['route' => ['votes.submit', $ticket->id], 'method' => 'Post'])!!}
-                <!--button type="submit" class="btn btn-primary">Votar</button-->
-                <button type="submit" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-thumbs-up"></span> Votar
-                </button>
-            {!! Form::close() !!}
+                @else
 
-            @else
+                {!! Form::open(['route' => ['votes.destroy', $ticket->id], 'method' => 'DELETE'])!!}
+                    <!--button type="submit" class="btn btn-primary">Votar</button-->
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-thumbs-down"></span> Quitar Voto
+                    </button>
+                {!! Form::close() !!}
 
-            {!! Form::open(['route' => ['votes.destroy', $ticket->id], 'method' => 'DELETE'])!!}
-                <!--button type="submit" class="btn btn-primary">Votar</button-->
-                <button type="submit" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-thumbs-down"></span> Quitar Voto
-                </button>
-            {!! Form::close() !!}
-
+                @endif
             @endif
 
             <h3>Nuevo Comentario</h3>
