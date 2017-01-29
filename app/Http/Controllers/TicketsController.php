@@ -59,17 +59,16 @@ class TicketsController extends Controller
         return view('tickets.create');
     }
 
-    public function store(Request $request, Guard $auth)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required|max:120'
         ]);
 
-        //guardar el ticket con el ORM elocuent, no se necesita traer el usuario por que ya esta incluido al usar el modelo user
-        $ticket = $auth->user()->tickets()->create([
-            'title'     => $request->get('title'),
-            'status'    =>'open'
-        ]);
+        $ticket = $this->ticketRepository->openNew(
+            currentUser(),
+            $request->get('title')
+        );
 
         //forma anterior de guardar
         // $ticket = new Ticket();
