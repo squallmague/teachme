@@ -151,6 +151,7 @@ return [
         TeachMe\Providers\AuthServiceProvider::class,
         TeachMe\Providers\EventServiceProvider::class,
         TeachMe\Providers\RouteServiceProvider::class,
+        TeachMe\Providers\ViewServiceProvider::class,
 
     ],
 
